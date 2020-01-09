@@ -110,6 +110,7 @@ ODataSwift is also available through [Swift Package Manager](https://github.com/
 #### Xcode
 
 Select `File > Swift Packages > Add Package Dependency...`,  
+add `https://github.com/developer-celusion/ODataSwift.git`
 
 [comment]: <> (<img src="https://user-images.githubusercontent.com/40610/67627000-2833b580-f88f-11e9-89ef-18819b1a6c67.png" width="800px" />)
 
