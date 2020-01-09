@@ -111,7 +111,7 @@ ODataSwift is also available through [Swift Package Manager](https://github.com/
 
 Select `File > Swift Packages > Add Package Dependency...`,  
 
-<img src="https://user-images.githubusercontent.com/40610/67627000-2833b580-f88f-11e9-89ef-18819b1a6c67.png" width="800px" />
+[comment]: <> (<img src="https://user-images.githubusercontent.com/40610/67627000-2833b580-f88f-11e9-89ef-18819b1a6c67.png" width="800px" />)
 
 #### CLI
 
@@ -149,7 +149,7 @@ $ swift build
 
 _See [iOS Example Project](https://github.com/kishikawakatsumi/KeychainAccess/tree/master/Examples/Example-iOS) as reference._
 
-<img src="https://raw.githubusercontent.com/kishikawakatsumi/KeychainAccess/master/Screenshots/Installation.png" width="800px" />
+[comment]: <> (<img src="https://raw.githubusercontent.com/kishikawakatsumi/KeychainAccess/master/Screenshots/Installation.png" width="800px" />)
 
 ## Author
 
