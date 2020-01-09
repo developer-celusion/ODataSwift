@@ -147,7 +147,7 @@ $ swift build
 2. Link `ODataSwift.framework` with your target
 3. Add `Copy Files Build Phase` to include the framework to your application bundle
 
-_See [iOS Example Project](https://github.com/kishikawakatsumi/KeychainAccess/tree/master/Examples/Example-iOS) as reference._
+_See [iOS Example Project](https://github.com/developer-celusion/ODataSwift/tree/master/Examples/Example-iOS) as reference._
 
 [comment]: <> (<img src="https://raw.githubusercontent.com/kishikawakatsumi/KeychainAccess/master/Screenshots/Installation.png" width="800px" />)
 
