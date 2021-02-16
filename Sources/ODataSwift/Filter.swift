@@ -273,7 +273,7 @@ public class FilterExp: QueryConvertible {
     e.g $filter=Age lt 65 or (Name eq 'martin')
     */
     public func or(_ expressions: [FilterExp])->Self {
-        self.conjection = .and
+        self.conjection = .or
         self.expressions = expressions
         return self
     }
