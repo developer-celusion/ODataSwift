@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ODataSwift'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'The utility package for OData Client in Swift'
 
 # This description is used to generate tags and improve search results.
