@@ -33,6 +33,9 @@ public class Expand: QueryConvertible {
     
     /// Nested Expand
     private var expand: Expand?
+
+    /// Order block within expand
+    private var order: Order?
     
     /**
      Initializes new Expand with provided navigational property or properties
@@ -93,6 +96,16 @@ public class Expand: QueryConvertible {
     }
     
     /**
+    Append new order
+
+     - Parameter order: $order property name of Order data type
+    */
+    public func order(_ order: Order) -> Self {
+        self.order = order
+        return self
+    }
+  
+    /**
     Append nested expand
      
      ~~~
@@ -110,7 +123,12 @@ public class Expand: QueryConvertible {
         var temp = "";
         temp += properties.joined(separator: ",")
         var part = "";
+        if let order = self.order {
+            part += QueryOption.order.queryText
+            part += order.queryText
+        }
         if(selects.count > 0) {
+            requestPart(part: &part)
             part += QueryOption.select.queryText
             part += selects.joined(separator: ",")
         }
