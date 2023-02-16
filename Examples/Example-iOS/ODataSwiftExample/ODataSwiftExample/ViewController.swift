@@ -31,7 +31,14 @@ class ViewController: UIViewController {
         str += "\n" + ODataQueryBuilder().entity("People").filter(FilterExp("username").contains().value("7")).build()
         labelGenQuery.text = str
     }
-    
+
+    @IBAction func orderWithinExpandDidPressed(_ sender: Any) {
+        let order = Order("EndsAt", orderType: .desc)
+        let expand = Expand("Trips").order(order).selects(["FirstName", "LastName"])
+        let str = ODataQueryBuilder().entity("People").expand(expand).build()
+        labelGenQuery.text = str
+    }
+
     @IBAction func expandDidPressed(_ sender: Any) {
         let filter = FilterExp("FirstName").eq().value("Scott").and([FilterExp("FirstName").eq().value("Scott")])
         let expand = Expand("Trips").filter(filter)
