@@ -47,7 +47,12 @@ public enum Predicate: String, QueryConvertible {
      ~~~
      */
     case eq = " eq "
-    
+
+    /**
+     Create expression with Not Equal **ne**
+
+     */
+    case ne = " ne "
     /**
      Create expression with Less Than **lt**
      
@@ -201,7 +206,13 @@ public class FilterExp: QueryConvertible {
         self.filterOption = .ge
         return self
     }
-    
+
+    /// Not equal to predicate
+    public func ne()->Self {
+      self.filterOption = .ne
+      return self
+    }
+
     /// less than equal to predicate
     public func le()->Self {
         self.filterOption = .le
