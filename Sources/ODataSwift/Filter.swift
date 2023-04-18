@@ -110,7 +110,13 @@ public enum Predicate: String, QueryConvertible {
      ~~~
      */
     case startswith = "startswith"
-    
+
+    /**
+     Create expression with in operator **in []**
+     */
+    case `in` = " in "
+
+
     public var queryText: String {
         return self.rawValue
     }
@@ -201,7 +207,13 @@ public class FilterExp: QueryConvertible {
         self.filterOption = .le
         return self
     }
-    
+
+    /// in to predicate
+    public func `in`()->Self {
+      self.filterOption = .in
+      return self
+    }
+
     /// greater than predicate
     public func gt()->Self {
         self.filterOption = .gt

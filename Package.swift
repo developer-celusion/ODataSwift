@@ -3,6 +3,8 @@
 
 import PackageDescription
 
+let packageVersion = "1.1.1"
+
 let package = Package(
     name: "ODataSwift",
     platforms: [.macOS(.v10_12),
