@@ -29,6 +29,7 @@ class ViewController: UIViewController {
         let filter = FilterExp("FirstName").eq().value("Scott").and([FilterExp("FirstName").eq().value("Scott")])
         var str = ODataQueryBuilder().entity("People").filter(filter).build()
         str += "\n" + ODataQueryBuilder().entity("People").filter(FilterExp("username").contains().value("7")).build()
+        str += "\n" + ODataQueryBuilder().entity("Team").filter(FilterExp("Id").in().value([1234,2345])).build()
         labelGenQuery.text = str
     }
 
