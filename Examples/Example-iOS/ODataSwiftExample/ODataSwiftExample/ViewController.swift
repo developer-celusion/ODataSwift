@@ -30,6 +30,9 @@ class ViewController: UIViewController {
         var str = ODataQueryBuilder().entity("People").filter(filter).build()
         str += "\n" + ODataQueryBuilder().entity("People").filter(FilterExp("username").contains().value("7")).build()
         str += "\n" + ODataQueryBuilder().entity("Team").filter(FilterExp("Id").in().value([1234,2345])).build()
+      str += "\n" + ODataQueryBuilder().entity("Test").filter(FilterExp(OperatorFunc("Teams", .any, .in).add("team", value: [2345,3432]))).build()
+      let operatorFunc = OperatorFunc("Teams", .any, .eq).add("team", value: [2345,1234])
+      str += "\n" + operatorFunc.queryText
         labelGenQuery.text = str
     }
 

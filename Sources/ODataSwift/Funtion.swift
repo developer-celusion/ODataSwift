@@ -63,28 +63,65 @@ public class OperatorFunc: QueryConvertible {
     
     /// All or Any
     private var propertyOps: LogicalOperator
+    /// Predicate
+    private var filterOption: Predicate
+
+    /// Value of predicate expression
+    private var _value: String?
     
     /// String presentation of Property Function. Use queryText or String(describing: ) to get the string presentation
     private var propertyFunc: String? = nil
     
-    public init(_ property: String,_ propertyOps: LogicalOperator) {
+    public init(_ property: String, _ propertyOps: LogicalOperator, _ filterOption: Predicate) {
         self.property = property
         self.propertyOps = propertyOps
+        self.filterOption = filterOption
     }
-    
-    public func add(_ propertyFunc: String)-> Self {
+
+    public func add(_ propertyFunc: String, value: Any)-> Self {
         self.propertyFunc = propertyFunc
+        if filterOption == .eq {
+          nestedPropertyFunc(with: value)
+        } else {
+          self.value(value)
+        }
         return self
     }
-    
-    public var queryText: String {
-        var temp = property + propertyOps.queryText
-        if let propertyFunc = self.propertyFunc {
-            temp += "(" + propertyFunc + ")"
+
+    public func nestedPropertyFunc(with values: Any) {
+      guard let propertyFunc,
+            let values = values as? [Any] else { return }
+      var temp = ""
+      for (index, value) in values.enumerated() {
+        self.value(value)
+        temp += propertyFunc + filterOption.queryText + (_value ?? "")
+        if index != values.count - 1 {
+          temp += " or "
         }
-        return temp
+      }
+      self._value = temp
     }
-    
+
+    private func value(_ value: Any) {
+      if value is String {
+        self._value = "'" + String(describing: value) + "'"
+      } else {
+        self._value = String(describing: value)
+      }
+    }
+
+    public var queryText: String {
+      var temp = property + propertyOps.queryText
+      if let propertyFunc = self.propertyFunc,
+         let _value {
+        if filterOption == .in {
+          temp += "(" + propertyFunc + ":" + propertyFunc + filterOption.queryText + _value + ")"
+        } else {
+          temp += "(" + propertyFunc + ":" + _value + ")"
+        }
+      }
+      return temp
+    }
 }
 
 /**
