@@ -51,9 +51,6 @@ public class ODataQueryBuilder: QueryConvertible {
     }
     
     public init() {
-        if Self.url == nil {
-            fatalError(ODataError.urlNotSet.localizedDescription)
-        }
         self.entityName = nil
         self.selects = [String]()
         self.filters = [FilterExp]()
