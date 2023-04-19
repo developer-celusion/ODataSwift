@@ -172,7 +172,10 @@ public class FilterExp: QueryConvertible {
     public init(_ propertyFunc:PropertyFunc) {
         self.property = propertyFunc.queryText
     }
-    
+
+    public init(_ operatorFunc:OperatorFunc) {
+      self.property = operatorFunc.queryText
+    }
     /**
      Any value data type. It add ' when type is String otherwise set directly
      e.g age eq 10 and name eq 'martin'
@@ -322,6 +325,8 @@ public class FilterExp: QueryConvertible {
                 }
                 temp += ")"
             }
+        } else {
+          temp += property
         }
         return temp
     }
