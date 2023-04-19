@@ -3,7 +3,7 @@
 
 import PackageDescription
 
-let packageVersion = "1.1.3"
+let packageVersion = "1.1.4"
 
 let package = Package(
     name: "ODataSwift",
