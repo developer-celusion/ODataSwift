@@ -319,11 +319,15 @@ public class FilterExp: QueryConvertible {
                 temp += conjection.queryText + expression.queryText
             }
             if self.expressions.count > 0 {
-                temp += conjection.queryText + " ("
-                for expression in expressions {
-                    temp += expression.queryText
+              temp += conjection.queryText + " ("
+              for (index, expression) in expressions.enumerated() {
+                if index != expressions.count - 1, expressions.count > 1 {
+                  temp += expression.queryText + conjection.queryText
+                } else {
+                  temp += expression.queryText
                 }
-                temp += ")"
+              }
+              temp += ")"
             }
         } else {
           temp += property
